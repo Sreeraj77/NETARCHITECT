@@ -1,0 +1,703 @@
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  color: #111827;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.app-header {
+  background: #111827;
+  color: white;
+  padding: 28px 40px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+.app-header p {
+  margin: 8px 0 0;
+  color: #cbd5e1;
+  font-size: 15px;
+}
+
+/* ============================================================
+   MAIN CONTAINER
+   ============================================================ */
+
+.app-container {
+  width: min(1200px, 92%);
+  margin: 40px auto;
+  padding-bottom: 60px;
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+
+.requirement-section,
+.result-section {
+  background: white;
+  border-radius: 14px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.result-section h2,
+.requirement-section h2 {
+  margin: 0 0 8px;
+  font-size: 21px;
+}
+
+.section-description {
+  margin: 0 0 18px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   REQUIREMENT INPUT
+   ============================================================ */
+
+textarea {
+  width: 100%;
+  min-height: 150px;
+  margin-top: 5px;
+  padding: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  resize: vertical;
+  font-size: 15px;
+  font-family: inherit;
+  line-height: 1.5;
+  color: #111827;
+  background: #ffffff;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #64748b;
+  box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+button {
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    opacity 0.2s ease;
+}
+
+button:hover {
+  background: #1f2937;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Main generate button */
+
+.generate-button {
+  display: block;
+  margin: 18px 0 0 auto;
+  padding: 13px 24px;
+}
+
+/* ============================================================
+   ERROR
+   ============================================================ */
+
+.error-message {
+  margin-top: 15px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 14px;
+}
+
+/* ============================================================
+   INTENT GRID
+   ============================================================ */
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.info-card {
+  padding: 17px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.info-card span {
+  display: block;
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+
+.info-card strong {
+  font-size: 16px;
+}
+
+/* ============================================================
+   NETWORK OVERVIEW
+   ============================================================ */
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.overview-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.overview-card span {
+  display: block;
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.overview-card strong {
+  font-size: 19px;
+}
+
+/* ============================================================
+   TOPOLOGY
+   ============================================================ */
+
+.topology-container {
+  width: 100%;
+  height: 650px;
+  margin-top: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+.topology-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #64748b;
+}
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 18px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 13px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+  background: #f8fafc;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+td {
+  font-size: 14px;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* ============================================================
+   DEVICE CARDS
+   ============================================================ */
+
+.device-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.device-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px;
+  background: #ffffff;
+}
+
+.device-card h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+.device-card p {
+  margin: 8px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.device-quantity {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+/* ============================================================
+   TWO COLUMN
+   ============================================================ */
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* ============================================================
+   TAGS
+   ============================================================ */
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 15px;
+}
+
+.tag {
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #eef2ff;
+  color: #3730a3;
+  font-size: 13px;
+}
+
+.security-tag {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+/* ============================================================
+   RECOMMENDATIONS
+   ============================================================ */
+
+.recommendation-list {
+  margin: 15px 0 0;
+  padding-left: 20px;
+}
+
+.recommendation-list li {
+  margin-bottom: 10px;
+  color: #475569;
+}
+
+/* ============================================================
+   CISCO CONFIGURATION GENERATOR
+   ============================================================ */
+
+.config-panel {
+  margin-top: 30px;
+}
+
+.config-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.config-header h2 {
+  margin-bottom: 8px;
+}
+
+.config-header .generate-button {
+  flex-shrink: 0;
+  margin: 0;
+  align-self: center;
+}
+
+/* Configuration content */
+
+.configuration-content {
+  margin-top: 22px;
+}
+
+/* ============================================================
+   DEVICE SELECTOR
+   ============================================================ */
+
+.device-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.device-selector label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.device-selector select {
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  color: #111827;
+  font-size: 14px;
+  min-width: 240px;
+  cursor: pointer;
+}
+
+.device-selector select:focus {
+  outline: none;
+  border-color: #64748b;
+}
+
+/* ============================================================
+   CONFIGURATION VIEWER
+   ============================================================ */
+
+.configuration-viewer {
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111827;
+}
+
+.config-viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 12px 16px;
+  background: #1f2937;
+}
+
+.config-viewer-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 14px;
+}
+
+.config-actions {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+}
+
+.config-actions button {
+  margin: 0;
+  padding: 8px 13px;
+  background: #374151;
+  font-size: 12px;
+}
+
+.config-actions button:hover {
+  background: #4b5563;
+}
+
+.config-code {
+  margin: 0;
+  padding: 20px;
+  background: #111827;
+  color: #e5e7eb;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 600px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre;
+  text-align: left;
+}
+
+/* ============================================================
+   VALIDATION
+   ============================================================ */
+
+.validation-panel {
+  margin-top: 30px;
+}
+
+.validation-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.validation-header h2 {
+  margin-bottom: 8px;
+}
+
+.validate-button {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 13px 22px;
+  align-self: center;
+}
+
+.validation-content {
+  margin-top: 22px;
+}
+
+/* ============================================================
+   VALIDATION STATUS
+   ============================================================ */
+
+.validation-status {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+
+.validation-success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.validation-failure {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.validation-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.validation-success .validation-icon {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.validation-failure .validation-icon {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.validation-status strong {
+  display: block;
+  font-size: 16px;
+}
+
+.validation-status p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* ============================================================
+   VALIDATION CHECKS
+   ============================================================ */
+
+.validation-checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.validation-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.validation-check span {
+  color: #334155;
+  font-size: 13px;
+}
+
+.validation-check strong {
+  font-size: 12px;
+}
+
+.pass {
+  color: #15803d;
+}
+
+.fail {
+  color: #dc2626;
+}
+
+/* ============================================================
+   VALIDATION ERRORS
+   ============================================================ */
+
+.validation-errors {
+  margin-top: 18px;
+  padding: 15px;
+  border-radius: 8px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.validation-errors h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.validation-errors p {
+  margin: 5px 0;
+  font-size: 13px;
+}
+
+.validation-error {
+  margin-top: 15px;
+  padding: 12px 14px;
+  color: #991b1b;
+  background: #fee2e2;
+  border-radius: 8px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .device-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .validation-checks {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .app-header {
+    padding: 25px 20px;
+  }
+
+  .app-container {
+    width: 94%;
+    margin: 25px auto;
+  }
+
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .config-header,
+  .validation-header {
+    flex-direction: column;
+  }
+
+  .config-header .generate-button,
+  .validate-button {
+    width: 100%;
+  }
+
+  .device-selector {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .device-selector select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .overview-grid,
+  .info-grid,
+  .device-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .requirement-section,
+  .result-section {
+    padding: 18px;
+  }
+
+  .app-header h1 {
+    font-size: 25px;
+  }
+}

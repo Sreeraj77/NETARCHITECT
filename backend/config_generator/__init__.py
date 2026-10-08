@@ -1,0 +1,1 @@
+from .cisco_generator import generate_all_configurations
